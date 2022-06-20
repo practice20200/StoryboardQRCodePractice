@@ -7,10 +7,11 @@
 
 import UIKit
 import Elements
+import CoreImage.CIFilterBuiltins
 
 class ViewController: UIViewController {
     
-   
+    private var inputURl = ""
     
     lazy var inputTF : BaseUITextField = {
         let tf = BaseUITextField()
@@ -22,7 +23,6 @@ class ViewController: UIViewController {
     
     lazy var createBTN: BaseUIButton = {
         let btn = BaseUIButton()
-//        btn.setTitle("Create", for: .normal)
         btn.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
         btn.addTarget(self, action: #selector(downloadHandler), for: .touchUpInside)
         btn.widthAnchor.constraint(equalToConstant: 50).isActive = true
@@ -51,6 +51,8 @@ class ViewController: UIViewController {
     }()
     
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -72,7 +74,13 @@ class ViewController: UIViewController {
     
     
     @objc func downloadHandler(){
-        
+        if !inputTF.text!.isEmpty{
+            inputURl = inputTF.text!
+            QRCodeImageView.image = QRCodeGenerator().generateQRCode(forURLString: inputURl)?.uiImage
+        }else {
+            inputURl = "Error"
+        }
     }
 }
+
 
