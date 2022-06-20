@@ -13,6 +13,7 @@
 		B3C640F728611B110099852D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C640F528611B110099852D /* Main.storyboard */; };
 		B3C640F928611B1B0099852D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C640F828611B1B0099852D /* Assets.xcassets */; };
 		B3C640FC28611B1B0099852D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C640FA28611B1B0099852D /* LaunchScreen.storyboard */; };
+		B3C6410828611D5B0099852D /* Elements in Frameworks */ = {isa = PBXBuildFile; productRef = B3C6410728611D5B0099852D /* Elements */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C6410828611D5B0099852D /* Elements in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +58,39 @@
 		B3C640EE28611B110099852D /* storyboardQRCode */ = {
 			isa = PBXGroup;
 			children = (
-				B3C640EF28611B110099852D /* AppDelegate.swift */,
-				B3C640F128611B110099852D /* SceneDelegate.swift */,
-				B3C640F328611B110099852D /* ViewController.swift */,
-				B3C640F528611B110099852D /* Main.storyboard */,
-				B3C640F828611B1B0099852D /* Assets.xcassets */,
-				B3C640FA28611B1B0099852D /* LaunchScreen.storyboard */,
+				B3C6410528611C320099852D /* Controllers */,
+				B3C6410428611C190099852D /* Resources */,
+				B3C6410328611BF50099852D /* Utils */,
 				B3C640FD28611B1B0099852D /* Info.plist */,
 			);
 			path = storyboardQRCode;
+			sourceTree = "<group>";
+		};
+		B3C6410328611BF50099852D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B3C640EF28611B110099852D /* AppDelegate.swift */,
+				B3C640F128611B110099852D /* SceneDelegate.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B3C6410428611C190099852D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3C640FA28611B1B0099852D /* LaunchScreen.storyboard */,
+				B3C640F528611B110099852D /* Main.storyboard */,
+				B3C640F828611B1B0099852D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B3C6410528611C320099852D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3C640F328611B110099852D /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +109,9 @@
 			dependencies = (
 			);
 			name = storyboardQRCode;
+			packageProductDependencies = (
+				B3C6410728611D5B0099852D /* Elements */,
+			);
 			productName = storyboardQRCode;
 			productReference = B3C640EC28611B110099852D /* storyboardQRCode.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +140,9 @@
 				Base,
 			);
 			mainGroup = B3C640E328611B110099852D;
+			packageReferences = (
+				B3C6410628611D5B0099852D /* XCRemoteSwiftPackageReference "ElementKit" */,
+			);
 			productRefGroup = B3C640ED28611B110099852D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -356,6 +388,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B3C6410628611D5B0099852D /* XCRemoteSwiftPackageReference "ElementKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/practice20200/ElementKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B3C6410728611D5B0099852D /* Elements */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C6410628611D5B0099852D /* XCRemoteSwiftPackageReference "ElementKit" */;
+			productName = Elements;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B3C640E428611B110099852D /* Project object */;
 }
