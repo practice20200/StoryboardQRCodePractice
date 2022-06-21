@@ -16,6 +16,9 @@
 		B3C6410828611D5B0099852D /* Elements in Frameworks */ = {isa = PBXBuildFile; productRef = B3C6410728611D5B0099852D /* Elements */; };
 		B3C6410B2861359D0099852D /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6410A2861359D0099852D /* QRCode.swift */; };
 		B3C6410D286135F40099852D /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C6410C286135F40099852D /* QRCodeGenerator.swift */; };
+		B3C641102861405B0099852D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B3C6410F2861405B0099852D /* RxCocoa */; };
+		B3C641122861405B0099852D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3C641112861405B0099852D /* RxSwift */; };
+		B3C64115286159E40099852D /* textFieldCheckerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C64114286159E40099852D /* textFieldCheckerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,7 @@
 		B3C640FD28611B1B0099852D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3C6410A2861359D0099852D /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		B3C6410C286135F40099852D /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+		B3C64114286159E40099852D /* textFieldCheckerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldCheckerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C641122861405B0099852D /* RxSwift in Frameworks */,
+				B3C641102861405B0099852D /* RxCocoa in Frameworks */,
 				B3C6410828611D5B0099852D /* Elements in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +68,7 @@
 		B3C640EE28611B110099852D /* storyboardQRCode */ = {
 			isa = PBXGroup;
 			children = (
+				B3C64113286159C80099852D /* ViewModels */,
 				B3C64109286135850099852D /* Models */,
 				B3C6410528611C320099852D /* Controllers */,
 				B3C6410428611C190099852D /* Resources */,
@@ -107,6 +114,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		B3C64113286159C80099852D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B3C64114286159E40099852D /* textFieldCheckerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,6 +140,8 @@
 			name = storyboardQRCode;
 			packageProductDependencies = (
 				B3C6410728611D5B0099852D /* Elements */,
+				B3C6410F2861405B0099852D /* RxCocoa */,
+				B3C641112861405B0099852D /* RxSwift */,
 			);
 			productName = storyboardQRCode;
 			productReference = B3C640EC28611B110099852D /* storyboardQRCode.app */;
@@ -156,6 +173,7 @@
 			mainGroup = B3C640E328611B110099852D;
 			packageReferences = (
 				B3C6410628611D5B0099852D /* XCRemoteSwiftPackageReference "ElementKit" */,
+				B3C6410E2861405B0099852D /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = B3C640ED28611B110099852D /* Products */;
 			projectDirPath = "";
@@ -186,6 +204,7 @@
 			files = (
 				B3C6410D286135F40099852D /* QRCodeGenerator.swift in Sources */,
 				B3C640F428611B110099852D /* ViewController.swift in Sources */,
+				B3C64115286159E40099852D /* textFieldCheckerViewModel.swift in Sources */,
 				B3C6410B2861359D0099852D /* QRCode.swift in Sources */,
 				B3C640F028611B110099852D /* AppDelegate.swift in Sources */,
 				B3C640F228611B110099852D /* SceneDelegate.swift in Sources */,
@@ -337,6 +356,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = storyboardQRCode/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow to access to the file to save a QRcode image";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -364,6 +384,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = storyboardQRCode/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow to access to the file to save a QRcode image";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -414,6 +435,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		B3C6410E2861405B0099852D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -421,6 +450,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B3C6410628611D5B0099852D /* XCRemoteSwiftPackageReference "ElementKit" */;
 			productName = Elements;
+		};
+		B3C6410F2861405B0099852D /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C6410E2861405B0099852D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B3C641112861405B0099852D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3C6410E2861405B0099852D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,11 +7,15 @@
 
 import UIKit
 import Elements
+import RxCocoa
+import RxSwift
 import CoreImage.CIFilterBuiltins
 
 class ViewController: UIViewController {
     
     private var inputURl = ""
+    private let tfCheckerViewModel = textFieldCheckerViewModel()
+    private let disposeBag = DisposeBag()
     
     lazy var inputTF : BaseUITextField = {
         let tf = BaseUITextField()
@@ -68,6 +72,13 @@ class ViewController: UIViewController {
             QRCodeImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             
         ])
+        
+        // creatBTN behaviour
+        inputTF.becomeFirstResponder()
+        inputTF.rx.text.map { $0 ?? "" }.bind(to: tfCheckerViewModel.urlTextPublishSubject).disposed(by: disposeBag)
+        tfCheckerViewModel.isValid().bind(to: createBTN.rx.isEnabled).disposed(by: disposeBag)
+        tfCheckerViewModel.isValid().map{$0 ? 1 : 0.1}.bind(to: createBTN.rx.alpha).disposed(by: disposeBag)
+
     }
 
 
@@ -82,5 +93,4 @@ class ViewController: UIViewController {
         }
     }
 }
-
 
