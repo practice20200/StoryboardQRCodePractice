@@ -24,10 +24,20 @@ class ViewController: UIViewController {
         tf.layer.cornerRadius = 15
         return tf
     }()
+
+    lazy var deleteBTN: BaseUIButton = {
+        let btn = BaseUIButton()
+        btn.setImage(UIImage(systemName: "delete.left"), for: .normal)
+        btn.addTarget(self, action: #selector(deleteHandler), for: .touchUpInside)
+        btn.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        btn.layer.cornerRadius = 15
+        btn.backgroundColor = .systemGray5
+        return btn
+    }()
     
     lazy var createBTN: BaseUIButton = {
         let btn = BaseUIButton()
-        btn.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+        btn.setImage(UIImage(systemName: "arrow.down.to.line.circle.fill"), for: .normal)
         btn.addTarget(self, action: #selector(downloadHandler), for: .touchUpInside)
         btn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         btn.layer.cornerRadius = 15
@@ -35,12 +45,19 @@ class ViewController: UIViewController {
         return btn
     }()
     
-    lazy var upperContentStack: HStack = {
+    lazy var leftContentStack: HStack = {
         let stack = HStack()
         stack.addArrangedSubview(inputTF)
-        stack.addArrangedSubview(createBTN)
+        stack.addArrangedSubview(deleteBTN)
         stack.backgroundColor = .systemGray5
         stack.layer.cornerRadius = 15
+        return stack
+    }()
+    
+    lazy var upperContentStack: HStack = {
+        let stack = HStack()
+        stack.addArrangedSubview(leftContentStack)
+        stack.addArrangedSubview(createBTN)
         return stack
     }()
     
@@ -78,11 +95,13 @@ class ViewController: UIViewController {
         inputTF.rx.text.map { $0 ?? "" }.bind(to: tfCheckerViewModel.urlTextPublishSubject).disposed(by: disposeBag)
         tfCheckerViewModel.isValid().bind(to: createBTN.rx.isEnabled).disposed(by: disposeBag)
         tfCheckerViewModel.isValid().map{$0 ? 1 : 0.1}.bind(to: createBTN.rx.alpha).disposed(by: disposeBag)
-
+        
     }
 
-
     
+    @objc func deleteHandler(){
+        inputTF.text = ""
+    }
     
     @objc func downloadHandler(){
         if !inputTF.text!.isEmpty{
