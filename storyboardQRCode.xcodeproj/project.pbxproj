@@ -19,6 +19,8 @@
 		B3C641102861405B0099852D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B3C6410F2861405B0099852D /* RxCocoa */; };
 		B3C641122861405B0099852D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B3C641112861405B0099852D /* RxSwift */; };
 		B3C64115286159E40099852D /* textFieldCheckerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C64114286159E40099852D /* textFieldCheckerViewModel.swift */; };
+		B3C7ED3428630227004322A9 /* ImageSaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7ED3328630227004322A9 /* ImageSaveManager.swift */; };
+		B3C7ED362863B6FE004322A9 /* SaveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C7ED352863B6FE004322A9 /* SaveResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		B3C6410A2861359D0099852D /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		B3C6410C286135F40099852D /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		B3C64114286159E40099852D /* textFieldCheckerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textFieldCheckerViewModel.swift; sourceTree = "<group>"; };
+		B3C7ED3328630227004322A9 /* ImageSaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaveManager.swift; sourceTree = "<group>"; };
+		B3C7ED352863B6FE004322A9 /* SaveResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 				B3C640EF28611B110099852D /* AppDelegate.swift */,
 				B3C640F128611B110099852D /* SceneDelegate.swift */,
 				B3C6410C286135F40099852D /* QRCodeGenerator.swift */,
+				B3C7ED3328630227004322A9 /* ImageSaveManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C6410A2861359D0099852D /* QRCode.swift */,
+				B3C7ED352863B6FE004322A9 /* SaveResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +209,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C6410D286135F40099852D /* QRCodeGenerator.swift in Sources */,
+				B3C7ED362863B6FE004322A9 /* SaveResult.swift in Sources */,
+				B3C7ED3428630227004322A9 /* ImageSaveManager.swift in Sources */,
 				B3C640F428611B110099852D /* ViewController.swift in Sources */,
 				B3C64115286159E40099852D /* textFieldCheckerViewModel.swift in Sources */,
 				B3C6410B2861359D0099852D /* QRCode.swift in Sources */,

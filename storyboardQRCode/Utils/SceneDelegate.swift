@@ -17,6 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let vc = ViewController()
         let navigation = UINavigationController(rootViewController: vc)
+        vc.title = "QRCode"
+        vc.navigationItem.largeTitleDisplayMode = .always
+        vc.navigationController?.navigationBar.prefersLargeTitles = true
         window.rootViewController = navigation
 
         self.window = window

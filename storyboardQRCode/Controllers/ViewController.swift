@@ -14,6 +14,7 @@ import CoreImage.CIFilterBuiltins
 class ViewController: UIViewController {
     
     private var inputURl = ""
+    var savedImage: UIImage?
     private let tfCheckerViewModel = textFieldCheckerViewModel()
     private let disposeBag = DisposeBag()
     
@@ -37,8 +38,8 @@ class ViewController: UIViewController {
     
     lazy var createBTN: BaseUIButton = {
         let btn = BaseUIButton()
-        btn.setImage(UIImage(systemName: "arrow.down.to.line.circle.fill"), for: .normal)
-        btn.addTarget(self, action: #selector(downloadHandler), for: .touchUpInside)
+        btn.setImage(UIImage(systemName: "doc.badge.plus"), for: .normal)
+        btn.addTarget(self, action: #selector(createHandler), for: .touchUpInside)
         btn.widthAnchor.constraint(equalToConstant: 50).isActive = true
         btn.layer.cornerRadius = 15
         btn.backgroundColor = .systemGray5
@@ -63,7 +64,11 @@ class ViewController: UIViewController {
     
     lazy var QRCodeImageView: BaseUIImageView = {
         let iv = BaseUIImageView()
-        iv.image = UIImage(systemName: "qrcode.viewfinder")
+        let image = UIImage(systemName: "qrcode.viewfinder")
+        let configuration =
+            UIImage.SymbolConfiguration(hierarchicalColor: .systemGray4)
+        iv.preferredSymbolConfiguration = configuration
+        iv.image = image
         let width = view.frame.size.width-40
         let height = view.frame.size.width-40
         iv.widthAnchor.constraint(equalToConstant: width).isActive = true
@@ -76,9 +81,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        title = "QRCode"
+        
         view.backgroundColor = .systemBackground
         view.addSubview(upperContentStack)
         view.addSubview(QRCodeImageView)
+        
         
         NSLayoutConstraint.activate([
         
@@ -96,6 +104,23 @@ class ViewController: UIViewController {
         tfCheckerViewModel.isValid().bind(to: createBTN.rx.isEnabled).disposed(by: disposeBag)
         tfCheckerViewModel.isValid().map{$0 ? 1 : 0.1}.bind(to: createBTN.rx.alpha).disposed(by: disposeBag)
         
+        let downloadBTN = UIBarButtonItem(image: UIImage(systemName: "arrow.down.to.line.circle.fill"), style: .plain, target: self, action: #selector(downloadHandler))
+        navigationItem.rightBarButtonItem = downloadBTN
+        
+    }
+    
+    func successAlertAction(){
+        let alertView = UIAlertController(title: "Success", message: "Your QRCode was successfully saved", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertView.addAction(OKAction)
+        present(alertView, animated: true)
+    }
+    
+    func failAlertAction(){
+        let alertView = UIAlertController(title: "Error", message: "Your QRCode was not saved", preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertView.addAction(OKAction)
+        present(alertView, animated: true)
     }
 
     
@@ -103,13 +128,25 @@ class ViewController: UIViewController {
         inputTF.text = ""
     }
     
-    @objc func downloadHandler(){
+    @objc func createHandler(){
         if !inputTF.text!.isEmpty{
             inputURl = inputTF.text!
+            savedImage = QRCodeGenerator().generateQRCode(forURLString: inputURl)?.uiImage
             QRCodeImageView.image = QRCodeGenerator().generateQRCode(forURLString: inputURl)?.uiImage
         }else {
             inputURl = "Error"
+            failAlertAction()
         }
+    }
+    
+    @objc func downloadHandler(){
+        
+        guard let savedImage = QRCodeGenerator().generateQRCode(forURLString: inputURl)?.uiImage else {
+            failAlertAction()
+            return
+        }
+        successAlertAction()
+        ImageSaver().saveImage(image: savedImage)
     }
 }
 
